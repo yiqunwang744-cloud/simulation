@@ -1,0 +1,109 @@
+\section{Auction Formats}
+
+\subsection{First-Price Auction (FPA)}
+Bidder's payoff:
+\begin{align}
+\pi_i^{\text{FPA}} = 
+\begin{cases}
+v_i - b_i, & \text{if } b_i > b_j \\
+0, & \text{if } b_i < b_j \\
+\frac{v_i}{2} - b_i, & \text{if } b_i = b_j
+\end{cases}
+\end{align}
+
+\subsection{Second-Price Auction (SPA)}
+Bidder's payoff:
+\begin{align}
+\pi_i^{\text{SPA}} = 
+\begin{cases}
+v_i - b_j, & \text{if } b_i > b_j \\
+0, & \text{if } b_i < b_j \\
+\frac{v_i}{2} - b_j, & \text{if } b_i = b_j
+\end{cases}
+\end{align}
+
+\subsection{All-Pay Auction (APA)}
+Bidder's payoff:
+\begin{align}
+\pi_i^{\text{APA}} = 
+\begin{cases}
+v_i - b_i, & \text{if } b_i > b_j \\
+-b_i, & \text{if } b_i < b_j \\
+\frac{v_i}{2} - b_i, & \text{if } b_i = b_j
+\end{cases}
+\end{align}
+
+\subsection{War of Attrition (WOA)}
+Bidder's payoff:
+\begin{align}
+\pi_i^{\text{WOA}} = 
+\begin{cases}
+v_i - b_j, & \text{if } b_i > b_j \\
+-b_i, & \text{if } b_i < b_j \\
+\frac{v_i}{2} - b_i, & \text{if } b_i = b_j
+\end{cases}
+\end{align}
+
+\section{Equilibrium Bidding Functions}
+
+\subsection{Second-Price Auction}
+\begin{align}
+b^{\text{SPA}}_{\eta}(x) = v^{\eta}(x,x) = x
+\end{align}
+
+\subsection{First-Price Auction}
+\begin{align}
+b^{\text{FPA}}_{\eta}(x) &= \int_{v_{\min}}^{x} v^{\eta}(t,t) dL^{\eta}(t|x) \\
+L^{\eta}(t|x) &= \exp\left(-\int_{t}^{x} \frac{f^{\eta}_{Y_1}(s|s)}{F^{\eta}_{Y_1}(s|s)}ds\right)
+\end{align}
+
+\subsection{War of Attrition}
+\begin{align}
+b^{\text{WOA}}_{\eta}(x) &= \int_{v_{\min}}^{x} v^{\eta}(t,t) \lambda^{\eta}(t|t)dt \\
+\lambda^{\eta}(y|x) &= \frac{f^{\eta}_{Y_1}(y|x)}{1-F^{\eta}_{Y_1}(y|x)}
+\end{align}
+
+\subsection{All-Pay Auction}
+\begin{align}
+b^{\text{APA}}_{\eta}(x) = \int_{v_{\min}}^{x} v^{\eta}(t,t) f^{\eta}_{Y_1}(t|t)dt
+\end{align}
+
+\section{Expected Revenue Expressions}
+
+\subsection{Second-Price Auction}
+\begin{align}
+e^{\text{SPA}}(x) = \int_{-\infty}^{x} v(y,y)f_{Y_1}(y|x)dy
+\end{align}
+
+\subsection{First-Price Auction}
+\begin{align}
+e^{\text{FPA}}(x) = F_{Y_1}(x|x)b^{\text{FPA}}(x)
+\end{align}
+
+\subsection{War of Attrition}
+\begin{align}
+e^{\text{WOA}}(x) &= \int_{-\infty}^{x} b^{\text{WOA}}(y)f_{Y_1}(y|x)dy + [1-F_{Y_1}(x|x)]b^{\text{WOA}}(x) \\
+&= \int_{-\infty}^{x} v(y,y)f_{Y_1}(y|x)\left[\frac{\lambda(y|y)}{\lambda(y|x)}\right]dy
+\end{align}
+
+\subsection{All-Pay Auction}
+\begin{align}
+e^{\text{APA}}(x) = b^{\text{APA}}(x) = \int_{-\infty}^{x} v(y,y)f_{Y_1}(y|y)dy
+\end{align}
+
+The expected revenue for mechanism $m$ is:
+\begin{align}
+\text{Revenue}_m = \int_{-\infty}^{\infty} e^m(x)f_X(x)dx
+\end{align}
+
+\section{Endogenous Information Acquisition}
+
+In the first stage, bidders simultaneously choose information precision $\eta$ to maximize expected utility:
+\begin{align}
+\max_{\eta} \mathbb{E}[u_i^m] - C(\eta)
+\end{align}
+
+The marginal return to information acquisition (MR) is defined as:
+\begin{align}
+MR_m(\eta) = \frac{\partial}{\partial\eta}\mathbb{E}[u_i^m]
+\end{align}
