@@ -1,0 +1,258 @@
+1 Introduction. 
+In this paper, we compare the incentives for information acquisition between the all-pay auction and the first-price auction, and between the war of attrition (second-price all-pay auction) and the second-price auction. As well-known models of contests, the all-pay auction (APA) and the war of attrition (WOA) involve unconditional investments due to their "all-pay rule". The first-price auction (FPA) and second-price auction (SPA), on the other hand, are competitions with conditional investments corresponding to the all-pay auction and war of attrition, respectively.
+
+Persico (2000) shows that players with affiliated values have stronger incentives to acquire information about their value in the FPA than the SPA. When a player acquires information, her signal is more correlated with her value and hence, the opponent's signal due to the affiliation. This implies that her bid is more correlated with the opponent's bid, and her winning bid must be just above the opponent's bid. The information acquisition effectively reduces the difference between the winning bid and the second-highest bid in the FPA, i.e., the "money left on the table". Since in the SPA, the winner pays the second-highest bid, there is no money left on the table. Hence, players have greater incentives to acquire information in the FPA than the SPA.
+
+Following the same method given by Persico (2000), we show that players in the FPA have stronger incentives for information acquisition than the APA, and stronger such incentives in the SPA than the WOA. However, the "money left on the table" intuition no longer applies here because the winner pays her own bid in both the FPA and the APA (and second-highest bid in both the SPA and the WOA). It is, in fact, the all-pay rule that discourages the players from correlating their bids with the opponent. In the AOA, correlation of bids results in not only close wins (hence, no money left on the table), but also close losses that are costly. This reasoning implies that information about the object is less valuable in the APA than the FPA. The same reasoning applies to interpret the finding that players have weaker incentives to correlate their bids in the WOA than the SPA: the bids are forfeited in the event of losing the WOA rather than the SPA.
+
+We show that the incentives are stronger in the APA than the WOA, which is due to the "money left on the table" effect, similar to the comparison between the FPA and the SPA in Persico (2000). In the event of winning the auctions, players pay their bid in the APA, but second-highest bid the WOA. The "all-pay rule" effect plays no role in this comparison because they pay their bids in both mechanisms in the event of losing the auctions.
+
+When comparing the incentives between the FPA and the WOA, both the "money left on the table" effect and the "all-pay rule" effect play a role. The combination of the two effects result in a stronger incentives in the FPA than the WOA. In particular, players pay the second-highest bid in the event of winning the WOA but their own bid in the FPA, hence the "money left on the table" effect predicts stronger incentives in the FPA. Furthermore, they pay their own bids in the event of losing the WOA but nothing in the FPA, hence the "all-pay rule" effect again predicts stronger incentives in the FPA.
+
+The two effects work against each other in comparing the incentives between the APA and the SPA. The ranking of the incentives between the two is thus ambiguous. Here, the "money left on the table" effect predicts stronger incentives in the APA than the SPA, whereas the "allpay rule" effect predicts the opposite. Our results, together with Persico (2000)'s finding that the incentives are stronger in the FPA than the SPA, are summarized in Figure 1.
+War of Attrition
+
+Figure 1: Ranking of information acquisition incentives: FPA induces the strongest incentives and WOA the weakest; the ranking between SPA and APA is ambiguous.
+Figure 2: Revenue ranking (Krishna and Morgan, 1997): WOA raises the highest revenue and FPA the lowest; the ranking between SPA and APA is ambiguous.
+Interestingly, the ranking of information acquisition incentives reverses the ranking of revenue given by Krishna and Morgan (1997) (Figure 2). As pointed out by Persico (2000), endogenous information acquisition in auctions with affiliated values may reverse revenue rankings obtained in fixed information environments. Specifically, Milgrom and Weber (1982) show that the SPA raises a greater revenue than the FPA in fixed affiliated signal environment, whereas Persico (2000) points out that the FPA may raise greater revenue than the SPA when players acquire information endogenously. The intuition is similar to that behind the linkage principle: since players' values are correlated, their information is "less private" when they have acquired more information, which drives their information rent down and expected revenue up. Krishna and Morgan (1997) rank revenue for the four auction formats with affiliated
+
+values, assuming that the degree of affiliation is weak (which we assume as well). ${ }^1$ The WOA raises the highest revenue, and the FPA the lowest. In between are the SPA and the APA, between which no deterministic ranking of revenue can be found. The findings in Figure 1 then suggest that WOA may not raise the highest revenue nor the FPA the lowest if players can endogenously acquire information, following the same intuition provided by Persico (2000).
+We contribute to the literature of information acquisition in auctions and contests. Morath and Münster (2013) consider endogenous information acquisition in an all-pay auction with independent private valuation, where each player is not aware of her true value and can choose to learn it at a cost. The authors show that they acquire information efficiently when the act of information acquisition is covert or the value learned is public information. However, when the act of information acquisition is overt and the value private, players acquire excessive information. In the current paper, information acquisition is a private choice of accuracy for the signal regarding the private value rather than a binary choice of whether to learn the value or not. The focus of the paper is to compare the incentives for information acquisition across auction formats, as in Persico (2000).
+
+With a similar taste as Persico (2000), Hernando-Veciana (2009) compares incentives for information acquisition between a second-price sealed-bid and an English auction, hence isolating the effect of openness on the incentives. The incentives are stronger in the former auction if the information acquisition is about a common component in players' values, whereas the order reverses if the acquisition is about a private component in players' values. Whether the information acquisition is about the common or the private component is exogenously given in Hernando-Veciana (2009). However, it is assumed to be chosen freely by players in Bobkova (2019), who provides conditions under which players acquire information for the private component. Shi (2012) studies optimal auction design allowing players to acquire information about their value by choosing the precision of signals (rotation ordered, see Johnson and Myatt (2006)) they acquired. Applying the same information acquisition technology as Shi (2012), Chen (2022) considers a different setting where players acquire information about their opponents' value before competing in an all-pay auction.
+${ }^1$ We also extend the findings to a setting where players observe binary affiliated signals. In such a parametric model, we are able to utilize recent developments in the all-pay auctions literature given that single-crossing property no longer holds (Chi et al., 2018, 2017).
+
+2 Model 
+The model of information acquisition in this paper follows exactly from Persico (2000). Affiliated values and signals: There are two players compete for an object in an auction mechanism $m .{ }^2$ Bidder $i$ 's valuation of the object is $u_i=u\left(V_i, V_j\right)$, where the function $u\left(v_i, v_j\right)$ is increasing in $v_i$ and nondecreasing in $v_j . V_1$ and $V_2$ are affiliated random variables (Milgrom and Weber, 1982) ${ }^3$ unobserved by the players, but each player can acquire information by choosing a signal $X_i^\eta$, which is affiliated with $V_i$, from a family $\left\{X_i^\eta\right\}_{\eta \in E}$ indexed by $\eta \in E$, where $E=[\underline{\eta}, \infty] . \eta$ is referred to as the "accuracy" of the signal $X_i^\eta . X_i^\eta$ has a probability density function $f_{X_i}^\eta\left(x_i \mid v_i\right)$ whose c.d.f is $F_{X_i}^\eta\left(x_i \mid v_i\right)$. The c.d.f function is differentiable with respect to $\eta$ on $E$, and is continuous in $v_i$. The players share a prior $g\left(v_1, v_2\right)$ on their distribution, with $g(\cdot, \cdot)$ a symmetric affiliated density function. Given the accuracy choices $\eta_1, \eta_2$, the joint distribution of signals and values is $$ f^{\eta_1 \eta_2}\left(x_1, x_2, v_1, v_2\right)=f_{X_1}^{\eta_1}\left(x_1 \mid v_1\right) f_{X_2}^{\eta_2}\left(x_2 \mid v_2\right) g\left(v_1, v_2\right) $$ The variables are hence affiliated. Let $\widetilde{u}\left(v_1, x_2\right)=E\left(u\left(V_1, V_2\right) \mid V_1=v_1, V_2=x_2\right)$. Denote by $C(\eta)$ the cost of accuracy with $C(\underline{\eta})=0$ and $M C(\eta)$ the marginal cost of increasing accuracy. Timing of the game: There are two stages in the information acquisition in auction game: in the first stage, player $i$ chooses her accuracy of signal $\eta_i$ simultaneously with player $j$; in the second stage, player $i$ submits her bid in the auction after observing the realization of $X_i^{\eta_i}$, but not the opponent's choice of accuracy $\eta_j$ nor the signal $X_j^{\eta_j}$ that the opponent observes. We make assumptions that guarantee a pure strategy monotonic equilibrium exists in the APA and the WOA in the second stage. The analysis thus focuses on the first stage. Accuracy and its marginal revenue: Definition 1 - 5 below follow exactly from Persico (2000). The purpose of providing the definitions is to walk readers through the contributions of Persico (2000) and to introduce his method of studying information acquisition. Readers who are familiar with Persico (2000) can skip the definitions. 
+
+Definition 1. Given two signals $X^\eta$ and $X^\theta$, we say that $X^\theta$ is more accurate than $X^\eta$ if $$ T_{\eta, \theta, v}(x) \equiv F_X^{\theta^{-1}}\left(F_X^\eta(x \mid v) \mid v\right) $$ is nondecreasing in $v$, for every $x$. 
+
+
+According to Persico (2000), the fact that $T_{\eta, \theta, v}(x)$ is nondecreasing in $v$ implies that $X^\theta$ is more correlated with a random variable $V$ than $X^\eta$. A new signal $x^{\prime}$ obtained from the $T_{\eta, \theta, v}(x)$ transformation is greater than $x$ when $v$ is high and is less than $x$ when $v$ is low. Definition 2. The family of signals $\left\{X^\eta\right\}_{\eta \in E}$ is $A$-ordered if a signal $X^\theta$ is more accurate than a signal $X^\eta$ for $\forall \eta \in E, \forall \theta \in E$, and $\theta>\eta$. When the family of signals is A-ordered, a signal with a higher index is more accurate than a signal with a lower index. Since a more accurate signal costs more, players have to balance the cost and benefit of increasing accuracy defined below. Definition 3. $A M R_m(\theta, \eta)$ : player 1's marginal revenue from increasing $\eta$ in mechanism $m$ when (a) player 1 has accuracy $\eta$, and (b) is best responding to a player 2 who has accuracy $\theta$ and plays the symmetric equilibrium strategy as if both players had accuracy $\theta$. Let $M R_m(\eta) \equiv A M R_m(\eta, \eta)$ the marginal return from increasing accuracy when both players have accuracy $\eta$. According to Theorem 1 in Persico (2000), Lehmann (1988) has shown that A-order is necessary and sufficient for "better information" when $X^\theta, X^\eta$ are affiliated with $V$, and the payoff satisfies single crossing property. Hence, for any auction $m$ with a payoff function that has the single-crossing property, we have $A M R_m(\eta, \eta) \geq 0$ and $M R_m(\eta) \geq 0$. Ranking incentives between auctions: To rank the incentives for information acquisition, define $u_m(v, b): \mathcal{V} \times B \rightarrow \mathcal{R}$ the payoff function of a player who bids $b$ in auction $m$ with an unknown value $v \in \mathcal{V}$. Definition 4. Given two payoff functions $u_I(v, b)$ and $u_{I I}(v, b), u_I$ is more risk-sensitive than $u_{I I}$ (denote by $\left.u_I \succeq u_{I I}\right)$ if $u_I-u_{I I}$ has the single-crossing property in $(b ; v)$. Persico (2000) establishes that $u_I\left(v, b_I^\eta(x)\right) \succeq u_{I I}\left(v, b_{I I}^\eta(x)\right)$, where $b_m^\eta$ with $m=I, I I$ is the optimal bid, is sufficient for $M R_I(\eta) \geq M R_{I I}(\eta)$, and hence, the set of optimal accuracies chosen in auction $I$ is higher (in the strong set order) than that of auction $I I$. In other words, the information acquisition incentives are stronger in auction $I$ than $I I$. Assuming that the marginal cost function $M C(\eta)$ crosses with both $M R_I$ and $M R_{I I}$ from below and only once, $M R_I(\eta) \geq M R_{I I}(\eta)$ is sufficient for stronger information acquisition incentives in auction $I$ than $I I$. Therefore, the main results we present in the next section is obtained by showing that the payoff function in auction $I$ is more risk-sensitive than that in auction $II$
+
+Definition 5 (Karamardian and Schaible (1990)). A function $H(v)$ is quasi-monotone if $v^{\prime}>v$ and $H(v)>0$ imply $H\left(v^{\prime}\right) \geq 0$. A quasi-monotone function $H(v)$ crosses the line $y \equiv 0$ at most once, and from below, as $v$ increases. According to Milgrom and Shannon (1994), $u_I-u_{I I}$ has the single-crossing property in $(a ; v)$ if its increment from $b$ to $b^{\prime}$, where $b^{\prime}>b$, is quasi-monotone in $v .{ }^4$ Hence, our task of comparing risk-sensitivities across auctions reduces to checking if the increment of differences between payoff functions of two given auctions is quasi-monotone in $v$ or not. Given that the variables $X_1, X_2, V_1, V_2$ are affiliated, we have the following useful facts: Fact 1. $F_{X_i}^\eta(x \mid v) / f_{X_i}^\eta(x \mid v)$ is non-increasing in $v$, for $\forall \eta \in E$. Fact 2. $f_{X_i}^\eta(x \mid v) /\left[1-F_{X_i}^\eta(x \mid v)\right]$ is non-increasing in $v$, for $\forall \eta \in E$. Fact 3. $F_{X_i}^\eta(x \mid v)$ is non-increasing in $v$, for $\forall \eta \in E$. We make the following assumptions throughout the paper. Assumption 1. The family of signals $\left\{X^\eta\right\}_{\eta \in E}$ is $A$-ordered. Assumption 2. $\widetilde{u}(v, x) f_{X_i}^\eta(x \mid v) /\left[1-F_{X_i}^\eta(x \mid v)\right]$ is increasing in $v$, for $\forall \eta \in E$. According to Krishna and Morgan (1997), Assumption 2 is sufficient for the existence of a pure strategy symmetric equilibrium in the WOA. Assumption 2 implies that $\widetilde{u}(v, x) f_{X_i}^\eta(x \mid v)$ is increasing in $v$, which is, in turn, sufficient for the existence of a pure strategy symmetric equilibrium in the APA. 
+
+Contests with conditional investments: In addition to analyzing information acquisition in four different mechanisms, we also introduce a general model of contests with conditional investments, where we extend the main results.
+In the general contests with conditional investment, player $i$ 's payoff is given by
+$$
+\pi_i=\left\{\begin{aligned}
+-\mu \cdot b_i, & \text { if } b_i<b_j \\
+v_i-\left[\lambda \cdot b_i+(1-\lambda) \cdot \max _{j \neq i}\left\{b_j\right\}\right], & \text { if } b_i>b_j \\
+\frac{1}{2} v_i-b_i, & \text { if } b_i=b_j
+\end{aligned}\right.
+$$
+
+${ }^4 \mathrm{~A}$ quasi-monotone function crosses the horizontal axis at most once, and from below, as its argument increases (Karamardian and Schaible, 1990). See formal definitions of single crossing property and quasi-monotone in the appendix.
+
+
+In such a payoff function, player $i$ pays a portion $\mu$ of her bid in the event of losing, and pays a linear combination of her bid and second highest bid $\lambda \cdot b_i+(1-\lambda) \cdot \max _{j \neq i}\left\{b_j\right\}$ in the event of winning. In the event of a tie, she pays her bid and wins with probability one half.
+
+For FPA, we have $\mu=0$ and $\lambda=1$; for SPA, we have $\mu=0$ and $\lambda=0$; for APA, we have $\mu=1$ and $\lambda=1$; and for WOA, we have $\mu=1$ and $\lambda=0$.
+3 Analysis: When single-crossing property holds
+
+In this section, we first focus on the analysis of four well-known mechanisms and provide the main results, given that the relevant single-crossing conditions are satisfied such that there always exists a monotonic equilibrium. Then, we extend the analysis to the general contests with conditional investments model that we introduced above.
+3.1 Single-crossing property
+
+We first show that the payoff functions of APA and WOA have the single-crossing property, given the assumptions we make. Suppose the joint distribution of signals $X_1, X_2$, and values $V_1, V_2$ is given by
+$$
+f\left(x_1, x_2, v_1, v_2\right)=f\left(x_1 \mid v_1\right) f\left(x_2 \mid v_2\right) g\left(v_1, v_2\right) .
+$$
+
+The maximization problem of player 1 with signal $x_1$ in the APA is given by
+$$
+\max _b \int_{-\infty}^{b_A^{-1}(b)} v\left(x_1, x_2\right) f\left(x_2 \mid x_1\right) d x_2-b=\max _b \int_{-\infty}^{+\infty} u_A\left(v_1, b\right) f\left(v_1 \mid x_1\right) d v_1
+$$
+where
+$$
+u_A\left(v_1, b\right)=\int_{-\infty}^{b_A^{-1}(b)} \widetilde{u}\left(v_1, x_2\right) d F\left(x_2 \mid v_1\right)-b .
+$$
+and $b_A\left(x_2\right)$ is player 2's strategy in the all-pay auction. Given Assumption 2, which implies that $\widetilde{u}(v, x) f(x \mid v)$ is increasing in $v$, it can be easily verified that $u_A\left(v_1, b\right)$ has the single-crossing property and hence, $A M R_A(\theta, \eta) \geq 0$ and $M R_A(\eta) \geq 0$ for $\forall \theta \in E, \forall \eta \in E$, due to Theorem 1 in Persico (2000).
+
+There exists a unique symmetric equilibrium $\left(\eta^*, \eta^*\right)$ if $M C(\eta)$ crosses $M R_m(\eta)$ from below and only once, where $m=W, A$. The equilibrium choice of accuracy is given by $M C\left(\eta^*\right)=$
+
+$M R_m\left(\eta^*\right)=A M R_m\left(\eta^*, \eta^*\right)$. Assuming that the marginal cost function satisfies such a requirement for all four auction formats, then there exists a unique symmetric equilibrium in all information acquisition games. In that case, comparing incentives for information acquisition is equivalent to comparing the marginal returns of information, which is how we proceed in the following analysis.
+In the WOA, player $i$ 's payoff is given by
+$$
+\pi_i=\left\{\begin{aligned}
+-b_i, & \text { if } b_i<b_{-i} \\
+v_i-b_{-i}, & \text { if } b_i>b_{-i} \\
+\frac{1}{2} v_i-b_i, & \text { if } b_i=b_{-i}
+\end{aligned}\right.
+$$
+
+Player 1 in a WOA with signal $x_1$ solves the following problem
+$$
+\max _b \int_{-\infty}^{b_W^{-1}(b)}\left[v\left(x_1, x_2\right)-b_W\left(x_2\right)\right] f\left(x_2 \mid x_1\right) d x_2-\int_{b_W^{-1}(b)}^{+\infty} b f\left(x_2 \mid x_1\right) d x_2,
+$$
+where
+$$
+v\left(x_1, x_2\right)=\int_{-\infty}^{+\infty} \widetilde{u}\left(v_1, x_2\right) f\left(v_1 \mid x_1, x_2\right) d v_1
+$$
+and $b_W\left(x_2\right)$ is player 2's strategy. By plugging in (2) such a maximization problem becomes:
+$$
+\begin{aligned}
+& \max _b \int_{-\infty}^{b_W^{-1}(b)}\left[\int_{-\infty}^{+\infty} \widetilde{u}\left(v_1, x_2\right) f\left(v_1 \mid x_1, x_2\right) d v_1-b_W\left(x_2\right)\right] f\left(x_2 \mid x_1\right) d x_2-\int_{b_W^{-1}(b)}^{+\infty} b f\left(x_2 \mid x_1\right) d x_2 \\
+= & \max _b \int_{-\infty}^{b_W^{-1}(b)} \int_{-\infty}^{+\infty}\left[\widetilde{u}\left(v_1, x_2\right)-b_W\left(x_2\right)\right] f\left(v_1 \mid x_1, x_2\right) f\left(x_2 \mid x_1\right) d v_1 d x_2 \\
+& -\int_{b_W^{-1}(b)}^{+\infty} \int_{-\infty}^{+\infty} b f\left(v_1 \mid x_1, x_2\right) f\left(x_2 \mid x_1\right) d v_1 d x_2 .
+\end{aligned}
+$$
+
+Since $f\left(v_1 \mid x_1, x_2\right) f\left(x_2 \mid x_1\right)=f\left(x_2 \mid v_1\right) f\left(v_1 \mid x_1\right)$, we can rewrite the maximization problem as
+$$
+\max _b \int_{-\infty}^{+\infty} u_W\left(v_1, b\right) f\left(v_1 \mid x_1\right) d v_1
+$$
+where
+$$
+u_W\left(v_1, b\right)=\int_{-\infty}^{b_W^{-1}(b)}\left[\widetilde{u}\left(v_1, x_2\right)-b_W\left(x_2\right)\right] d F\left(x_2 \mid v_1\right)-\int_{b_W^{-1}(b)}^{+\infty} b d F\left(x_2 \mid v_1\right) .
+$$
+
+
+
+Applying Assumption 2 it can be easily verified that the payoff function $u_W\left(v_1, b\right)$ has the singlecrossing property. Hence, greater accuracy is indeed better information for players in the WOA and thus, $A M R_W(\theta, \eta) \geq 0$ and $M R_W(\eta) \geq 0$ for $\forall \theta \in E, \forall \eta \in E$, due to Theorem 1 in Persico (2000).
+3.2 Ranking information acquisition incentives
+
+We start by ranking the incentives to acquire information between WOA and SPA. The first result we establish is that players in the SPA have stronger incentives of information acquisition than in the WOA. According to Persico (2000), the maximization problem that player 1 solves in a SPA is given by
+$$
+\max _b \int_{-\infty}^{+\infty} u_S\left(v_1, b\right) f\left(v_1 \mid x_1\right) d v_1,
+$$
+where
+$$
+u_S\left(v_1, b\right)=\int_{-\infty}^{b_S^{-1}(b)}\left[\widetilde{u}\left(v_1, x_2\right)-b_S\left(x_2\right)\right] d F\left(x_2 \mid v_1\right)
+$$
+and $b_S\left(x_2\right)$ denotes player 2's strategy in the SPA.
+
+Proposition 1. The marginal return of information is greater in the second-price auction than the war of attrition: $M R_S(\eta) \geq M R_W(\eta)$ for $\forall \eta \in E$.
+
+Proof. At a symmetric equilibrium, we have
+$$
+\begin{aligned}
+u_S\left(v_1, b_S^\eta\left(x_1\right)\right) & =\int_{-\infty}^{x_1}\left[\widetilde{u}\left(v_1, y\right)-b_S^\eta(y)\right] f_{X_2}^\eta\left(y \mid v_1\right) d y \\
+u_W\left(v_1, b_W^\eta\left(x_1\right)\right) & =\int_{-\infty}^{x_1}\left[\widetilde{u}\left(v_1, y\right)-b_W^\eta(y)\right] f_{X_2}^\eta\left(y \mid v_1\right) d y-\int_{x_1}^{+\infty} b_W^\eta\left(x_1\right) f_{X_2}^\eta\left(y \mid v_1\right) d y,
+\end{aligned}
+$$
+and hence,
+$$
+\begin{aligned}
+& u_S\left(v_1, b_S^\eta\left(x_1\right)\right)-u_W\left(v_1, b_W^\eta\left(x_1\right)\right) \\
+= & \int_{-\infty}^{x_1} b_W^\eta(y) f_{X_2}^\eta\left(y \mid v_1\right) d y+\int_{x_1}^{+\infty} b_W^\eta\left(x_1\right) f_{X_2}^\eta\left(y \mid v_1\right) d y-\int_{-\infty}^{x_1} b_S^\eta(y) f_{X_2}^\eta\left(y \mid v_1\right) d y .
+\end{aligned}
+$$
+
+Its first-order derivative w.r.t $x_1$ is given by
+$$
+\frac{\partial}{\partial x_1}\left[u_S\left(v_1, b_S^\eta\left(x_1\right)\right)-u_W\left(v_1, b_W^\eta\left(x_1\right)\right)\right]=f_{X_2}^\eta\left(x_1 \mid v_1\right)\left[\left(b_W^\eta\right)^{\prime}\left(x_1\right) \frac{1-F_{X_2}^\eta\left(x_1 \mid v_1\right)}{f_{X_2}^\eta\left(x_1 \mid v_1\right)}-b_S^\eta\left(x_1\right)\right] .
+$$
+
+Since $X_2$ and $V_1$ are affiliated, the above first-order derivative is quasi-monotone in $v_1$ due to Fact 2 .
+
+The intuition of "money left on the table" does not apply here to interpret Proposition 1. In the event of winning, player 1 pays the second-highest bid in both auctions. So there is no more money left on the table in one auction than the other. The intuition must rely on the fact that players pay their bids in WOA but pay nothing in the SPA in the event of losing the auction. The all-pay rule discourages players from correlating their bids with the opponent because of the correlation results in not only close wins (so no money left on the table) but also close losses (so more investments in vain). Therefore, information about the object is less valuable in the WOA than in the SPA.
+
+Now we show that players have stronger information acquisition incentives in the FPA than in the APA. According to Persico (2000), the maximization problem that player 1 solves in a FPA is given by
+$$
+\max _b \int_{-\infty}^{+\infty} u_F\left(v_1, b\right) f\left(v_1 \mid x_1\right) d v_1
+$$
+where
+$$
+u_F\left(v_1, b\right)=\int_{-\infty}^{b_F^{-1}(b)}\left[\widetilde{u}\left(v_1, x_2\right)-b\right] d F\left(x_2 \mid v_1\right),
+$$
+and $b_F$ denotes player 2's strategy.
+Proposition 2. The marginal return of information is greater in the first-price auction than all-pay auction: $M R_F(\eta) \geq M R_A(\eta)$ for $\forall \eta \in E$.
+
+Proof. At a symmetric equilibrium, we have
+$$
+\begin{aligned}
+& u_F\left(v_1, b_F^\eta\left(x_1\right)\right)=\int_{-\infty}^{x_1}\left[\widetilde{u}\left(v_1, y\right)-b_F^\eta\left(x_1\right)\right] f_{X_2}^\eta\left(y \mid v_1\right) d y \\
+& u_A\left(v_1, b_A^\eta\left(x_1\right)\right)=\int_{-\infty}^{x_1} \widetilde{u}\left(v_1, y\right) f_{X_2}^\eta\left(y \mid v_1\right) d y-b_A^\eta\left(x_1\right)
+\end{aligned}
+$$
+hence,
+$$
+u_F\left(v_1, b_F^\eta\left(x_1\right)\right)-u_A\left(v_1, b_A^\eta\left(x_1\right)\right)=b_A^\eta\left(x_1\right)-\int_{-\infty}^{x_1} b_F^\eta\left(x_1\right) f_{X_2}^\eta\left(y \mid v_1\right) d y .
+$$
+
+
+Its first-order derivative w.r.t $x_1, \frac{\partial}{\partial x_1}\left[u_F\left(v_1, b_F^\eta\left(x_1\right)\right)-u_A\left(v_1, b_A^\eta\left(x_1\right)\right)\right]$, is given by
+$$
+\left(b_A^\eta\right)^{\prime}\left(x_1\right)+\left[1-F_{X_2}^\eta\left(x_1 \mid v_1\right)\right]\left[-\left(b_F^\eta\right)^{\prime}\left(x_1\right) \frac{F_{X_2}^\eta\left(x_1 \mid v_1\right)}{1-F_{X_2}^\eta\left(x_1 \mid v_1\right)}-b_F^\eta\left(x_1\right) \frac{f_{X_2}^\eta\left(x_1 \mid v_1\right)}{1-F_{X_2}^\eta\left(x_1 \mid v_1\right)}\right] .
+$$
+
+Since $X_2$ and $V_1$ are affiliated, the first-order derivative is quasi-monotone in $v_1$ due to Fact 2 and 3 .
+
+The intuition behind Proposition 2 is similar to that of Proposition 1. Players in both auctions wish to correlate their bids with the opponent in order to reduce "money on the table" in close wins. What drives the difference in the information acquisition incentives is that players are concerned about close losses in the APA but not in the FPA. They thus have weaker incentives to acquire information in the APA than in the FPA.
+
+We now turn to a comparison between APA and WOA. Both the APA and the WOA are allpay auctions, and the difference lies in whether the winner pays her own or the second-highest bid. According to the "money left on the table" effect, players acquire more information in the APA than the WOA.
+
+Proposition 3. The marginal return of information is greater in the all-pay auction than the war of attrition: $M R_F(\eta) \geq M R_W(\eta)$ for $\forall \eta \in E$.
+
+Proof. The difference between $u_A\left(v_1, b_A^\eta\left(x_1\right)\right)$, given by (7), and $u_W^\eta\left(v_1, b_W^\eta\left(x_1\right)\right)$, given by (5), is
+$$
+\int_{-\infty}^{x_1} b_W^\eta(y) f\left(y \mid v_1\right) d y+\int_{x_1}^{+\infty} b_W^\eta\left(x_1\right) f\left(y \mid v_1\right) d y-b_A^\eta\left(x_1\right)
+$$
+
+Its first-order derivative w.r.t $x_1$ is given by
+$$
+\left(b_W^\eta\right)^{\prime}\left(x_1\right)\left[1-F_{X_2}^\eta\left(x_1 \mid v_1\right)\right]-\left(b_A^\eta\right)^{\prime}\left(x_1\right)
+$$
+which is quasi-monotone in $v_1$ due to Fact 3.
+
+The intuition behind Proposition 3 is the "money left on the table" effect driven by the fact that winners pay the second-highest bid in the WOA but their own bids in the APA. This result is consistent with Persico (1996), an earlier version of Persico (2000), which shows the same result using a slightly different approach.
+
+We now show that players have stronger incentives to acquire information in the FPA than the WOA. In fact, the result can also be inferred from the previous finding that the incentives are stronger in the FPA than the APA and that they are stronger in the FPA than the SPA (Persico, 2000).
+
+Proposition 4. The marginal return of information is greater in the first-price auction than the war of attrition: $M R_F(\eta) \geq M R_W(\eta)$ for $\forall \eta \in E$.
+
+Proof. At a symmetric equilibrium, we can calculate the difference between $u_F\left(v_1, b_F^\eta\left(x_1\right)\right)$, given by $(6)$, and $u_W\left(v_1, b_W^\eta\left(x_1\right)\right)$, given by $(5)$ :
+$$
+\begin{aligned}
+& u_F\left(v_1, b_F^\eta\left(x_1\right)\right)-u_W\left(v_1, b_W^\eta\left(x_1\right)\right) \\
+= & \int_{-\infty}^{x_1} b_W^\eta(y) f_{X_2}^\eta\left(y \mid v_1\right) d y+\int_{x_1}^{+\infty} b_W^\eta\left(x_1\right) f_{X_2}^\eta\left(y \mid v_1\right) d y-\int_{-\infty}^{x_1} b_F^\eta\left(x_1\right) f_{X_2}^\eta\left(y \mid v_1\right) d y
+\end{aligned}
+$$
+
+Its first-order derivative w.r.t $x_1$ is given by
+$$
+\begin{aligned}
+& \frac{\partial}{\partial x_1}\left[u_F\left(v_1, b_F^\eta\left(x_1\right)\right)-u_W\left(v_1, b_W^\eta\left(x_1\right)\right)\right] \\
+= & f_{X_2}^\eta\left(x_1 \mid v_1\right)\left[\left(b_W^\eta\right)^{\prime}\left(x_1\right) \frac{1-F_{X_2}^\eta\left(x_1 \mid v_1\right)}{f_{X_2}^\eta\left(x_1 \mid v_1\right)}-\left(b_F^\eta\right)^{\prime}(x) \frac{F_{X_2}^\eta\left(x_1 \mid v_1\right)}{f_{X_2}^\eta\left(x_1 \mid v_1\right)}-b_F^\eta\left(x_1\right)\right]
+\end{aligned}
+$$
+
+Since $X_2$ and $V_1$ are affiliated, the derivative is quasi-monotone in $v_1$ due to Fact 1 and 2.
+
+The intuition behind Proposition 4 is that the winner pays her own bid in the FPA but second-highest bid in the WOA, hence the "money left on the table" effect, and that the loser pays nothing in the FPA but her own bid in the WOA, hence the effect of the all-pay rule. Both effects imply that the former induces greater incentives to correlate one's bid with the opponent. As a result, the incentive is stronger in the FPA than the WOA.
+
+Finally, we compare the information acquisition incentives between APA and SPA. The allpay rule discourages players from correlating their bids, whereas the "money left on the table" effect induces players to correlate the bids. The two forces go against each other when we compare the incentive of information acquisition between the APA and the SPA: players in the APA pay their bid regardless of the outcome, whereas winner pays second-highest bid and loser pays nothing in the SPA. Hence, there is no deterministic ranking of information acquisition incentives between the two auctions. Indeed, the difference between $u_A\left(v_1, b_A^\eta\left(x_1\right)\right)$ and $u_S\left(v_1, b_S^\eta\left(x_1\right)\right)$ is given by
+$$
+b_A^\eta\left(x_1\right)-\int_{-\infty}^{x_1} b_S^\eta(y) f\left(y \mid v_1\right) d y,
+$$
+and its first-order derivative w.r.t $x_1$ is given by
+$$
+\left(b_A^\eta\right)^{\prime}\left(x_1\right)-b_S^\eta\left(x_1\right) f_{X_2}^\eta\left(x_1 \mid v_1\right),
+$$
+which is not necessarily quasi-monotone in $v_1$.
+3.3 Revenue ranking and information acquisition
+
+Persico (2000) points out that the FPA may raise greater revenue than the SPA when players acquire information endogenously. He provides the following intuition based on the linkage principle. Given that players observe affiliated signals regarding their correlated values, they are able to learn additional information about the opponent's value from their own signal. When players acquire information about their values, they increase the correlation between their signal and their value, which in turn increases the correlation between their signal and the opponents' signal. The stronger the correlation is, the more information a player can learn about opponents. This leads to a less private environment and hence, less information rent to players. Given that there exists a monotonic equilibrium, the less information rent implies greater seller revenue. It is then possible that the FPA raises greater revenue than the SPA. The intuition applies perfectly to our setting and provide strong implications to revenue ranking acrossing the four mechanisms. As shown in Figure 1 and 2, the revenue ranking reverses the incentives ranking, suggesting the revenue ranking given by Krishna and Morgan (1997) can be reversed when players acquire information endogenously.
+3.4 Extension: Information acquisition in contests with conditional investments
+
+In this section, we extend the previous analysis on the four special cases to the general contest with conditional investments model. We show that the information acquisition incentives is monotonic in both $\mu$ and $\lambda$.
+
+4 Analysis: When single-crossing property does not hold
+
+When Assumption 2 does not hold, the APA and WOA no longer have single-crossing property and hence, there exist no monotonic equilibrium in these mechanisms. To analyze the incentives to acquire information, we apply the results given by Chi et al. (2018), who characterizes non-monotonic equilibria in the APA when single-crossing property does not hold. The authors study APA with binary affiliated signals and show that there exist a nonmonotonic equilibrium in which the type of player who observes a high signal and the type who observes a low signal randomize in a common interval with a positive probability.
+
+5 Conclusion
+Players in the FPA (SPA) have stronger incentives to acquire information about the object value than in the APA (WOA) because they have to pay their bids in the latter in the event of losing the auctions. They are less willing to correlate their bids with the opponent due to the rule that losers also pay their bids. Hence, players in the contests with conditional investments have stronger information acquisition incentives than in the corresponding unconditional investments. The intuition is different from the "money left on the table" intuition (Persico, 2000), which still applies in explaining the finding that the incentives are stronger in the APA than in the WOA. The ranking of the incentives across the four auctions reverses the revenue ranking given by Krishna and Morgan (1997), suggesting the previous revenue ranking results may not hold in endogenous information environments.
+
+Appendix
+The formal definitions of affiliation and the single-crossing property are given below.
+
+Definition 6 (Milgrom and Weber (1982)). Two random variables $X$ and $V$ with joint density $f(x, v)$ are affiliated when
+$$
+x^{\prime}>x, v^{\prime}>v \Rightarrow f\left(x^{\prime}, v^{\prime}\right) f(x, v) \geq f\left(x, v^{\prime}\right) f\left(x^{\prime}, v\right) .
+$$
+
+Definition 7 (Milgrom and Shannon (1994)). A function $u(v, a)$ has the single crossing property in $(a ; v)$ if for any pair $a^{\prime}>a, u\left(v, a^{\prime}\right)-u(v, a)$ is quasi-monotone in $v$.
+
+
+
