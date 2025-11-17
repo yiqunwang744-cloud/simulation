@@ -439,12 +439,31 @@ function solve_eta_star_CI(mech::Symbol, m::AuctionModel;
     sL = sign_CI(μFa, seFa)
     sR = sign_CI(μFb, seFb)
 
-    # Check for corner solutions
+    # CRITICAL FIX: Do NOT return corner solutions that don't satisfy MR = MC!
+    # Corner solutions need to be validated just like interior solutions.
+    # If both boundaries have same sign, solution is likely at boundary,
+    # but we still need to verify MR ≈ MC before accepting it.
+
+    # If both positive: optimal might be at η_max (right corner)
     if sL == +1 && sR == +1
-        return b, μFb, seFb  # Right corner
+        # Check if right corner actually satisfies equilibrium
+        if abs(μFb) ≤ tol_abs && seFb ≤ tol_se
+            return b, μFb, seFb  # Valid right corner equilibrium
+        else
+            # Right corner doesn't satisfy MR=MC, no equilibrium exists
+            return NaN, μFb, seFb  # Return NaN to signal failure
+        end
     end
+
+    # If both negative: optimal might be at η_min (left corner)
     if sL == -1 && sR == -1
-        return a, μFa, seFa  # Left corner
+        # Check if left corner actually satisfies equilibrium
+        if abs(μFa) ≤ tol_abs && seFa ≤ tol_se
+            return a, μFa, seFa  # Valid left corner equilibrium
+        else
+            # Left corner doesn't satisfy MR=MC, no equilibrium exists
+            return NaN, μFa, seFa  # Return NaN to signal failure
+        end
     end
 
     # Bisection iterations
@@ -551,12 +570,40 @@ function revenue_with_CI(η::Float64, mech::Symbol, m::AuctionModel;
 end
 
 # ============================================================================
-# 10. COMPREHENSIVE ANALYSIS
+# 10. EQUILIBRIUM VALIDATION
+# ============================================================================
+
+"""
+Check if an equilibrium is valid (not NaN and satisfies MR ≈ MC)
+"""
+function is_valid_equilibrium(η::Float64, gap::Float64, se::Float64;
+                              tol_gap::Float64=1e-3, tol_se::Float64=1e-3)
+    # Check for NaN (failed solve)
+    if isnan(η)
+        return false
+    end
+
+    # Check if MR-MC gap is small enough
+    if abs(gap) > tol_gap
+        return false
+    end
+
+    # Check if standard error is reasonable
+    if se > tol_se
+        return false
+    end
+
+    return true
+end
+
+# ============================================================================
+# 11. COMPREHENSIVE ANALYSIS
 # ============================================================================
 
 """
 Analyze FPA vs SPA for given parameters
 Returns equilibria and revenues
+CRITICAL: Only reports reversals if BOTH equilibria are valid!
 """
 function analyze_FPA_vs_SPA(m::AuctionModel;
                             N::Int=120000, K::Int=4, verbose::Bool=true)
@@ -580,55 +627,103 @@ function analyze_FPA_vs_SPA(m::AuctionModel;
     ηF, gapF, seF = solve_eta_star_CI(:FPA, m; N=N, K=K)
     ηS, gapS, seS = solve_eta_star_CI(:SPA, m; N=N, K=K, seed=12345)
 
+    # CRITICAL: Validate equilibria before proceeding
+    validF = is_valid_equilibrium(ηF, gapF, seF)
+    validS = is_valid_equilibrium(ηS, gapS, seS)
+
     if verbose
         println("-"^70)
         println("EQUILIBRIUM RESULTS (MR = MC):")
-        @printf("FPA: η* = %.5f | MR-MC = %+.3e (SE ≈ %.2e)\n", ηF, gapF, seF)
-        @printf("SPA: η* = %.5f | MR-MC = %+.3e (SE ≈ %.2e)\n", ηS, gapS, seS)
 
-        if ηF > ηS
-            println("✓ Theoretical ranking confirmed: η*_FPA > η*_SPA")
+        if isnan(ηF)
+            println("FPA: ❌ FAILED - No equilibrium found")
         else
-            println("⚠ Unexpected ranking: η*_FPA ≤ η*_SPA")
+            @printf("FPA: η* = %.5f | MR-MC = %+.3e (SE ≈ %.2e)", ηF, gapF, seF)
+            if validF
+                println(" ✓")
+            else
+                println(" ❌ INVALID (|MR-MC| too large)")
+            end
+        end
+
+        if isnan(ηS)
+            println("SPA: ❌ FAILED - No equilibrium found")
+        else
+            @printf("SPA: η* = %.5f | MR-MC = %+.3e (SE ≈ %.2e)", ηS, gapS, seS)
+            if validS
+                println(" ✓")
+            else
+                println(" ❌ INVALID (|MR-MC| too large)")
+            end
+        end
+
+        if validF && validS
+            if ηF > ηS
+                println("\n✓ Theoretical ranking confirmed: η*_FPA > η*_SPA")
+            else
+                println("\n⚠ Unexpected ranking: η*_FPA ≤ η*_SPA")
+            end
+        else
+            println("\n⚠ Cannot verify ranking - invalid equilibria")
         end
         println()
     end
 
-    # Calculate revenues
-    if verbose
-        println("Calculating seller revenues at equilibrium...")
-    end
-
-    D = make_draws(m; N=N, seed=54321, antithetic=true)
-    cacheF = precompute_bids_FPA(ηF, m)
-
-    RF = revenue(ηF, :FPA, m, D; cacheFPA=cacheF)
-    RS = revenue(ηS, :SPA, m, D)
-
-    if verbose
-        println("-"^70)
-        println("SELLER REVENUE:")
-        @printf("R_FPA(η*) = %.6f\n", RF)
-        @printf("R_SPA(η*) = %.6f\n", RS)
-        @printf("Ratio: R_FPA/R_SPA = %.6f\n", RF/RS)
-
-        if RF > RS
-            println("🎉 REVERSAL FOUND: R_FPA > R_SPA!")
-            @printf("    FPA revenue exceeds SPA by %.2f%%\n", (RF/RS - 1) * 100)
-        else
-            println("Standard result: R_FPA < R_SPA")
-            @printf("    SPA revenue exceeds FPA by %.2f%%\n", (RS/RF - 1) * 100)
+    # Only calculate revenues if BOTH equilibria are valid
+    if validF && validS
+        if verbose
+            println("Calculating seller revenues at equilibrium...")
         end
-        println("="^70)
-    end
 
-    return (
-        ηF = ηF, ηS = ηS,
-        gapF = gapF, gapS = gapS,
-        RF = RF, RS = RS,
-        ratio = RF/RS,
-        reversal = (RF > RS)
-    )
+        D = make_draws(m; N=N, seed=54321, antithetic=true)
+        cacheF = precompute_bids_FPA(ηF, m)
+
+        RF = revenue(ηF, :FPA, m, D; cacheFPA=cacheF)
+        RS = revenue(ηS, :SPA, m, D)
+
+        if verbose
+            println("-"^70)
+            println("SELLER REVENUE:")
+            @printf("R_FPA(η*) = %.6f\n", RF)
+            @printf("R_SPA(η*) = %.6f\n", RS)
+            @printf("Ratio: R_FPA/R_SPA = %.6f\n", RF/RS)
+
+            if RF > RS
+                println("🎉 REVERSAL FOUND: R_FPA > R_SPA!")
+                @printf("    FPA revenue exceeds SPA by %.2f%%\n", (RF/RS - 1) * 100)
+            else
+                println("Standard result: R_FPA < R_SPA")
+                @printf("    SPA revenue exceeds FPA by %.2f%%\n", (RS/RF - 1) * 100)
+            end
+            println("="^70)
+        end
+
+        return (
+            ηF = ηF, ηS = ηS,
+            gapF = gapF, gapS = gapS,
+            seF = seF, seS = seS,
+            validF = validF, validS = validS,
+            RF = RF, RS = RS,
+            ratio = RF/RS,
+            reversal = (RF > RS)
+        )
+    else
+        # Return result with invalid flag
+        if verbose
+            println("⚠ Skipping revenue calculation - invalid equilibria")
+            println("="^70)
+        end
+
+        return (
+            ηF = ηF, ηS = ηS,
+            gapF = gapF, gapS = gapS,
+            seF = seF, seS = seS,
+            validF = validF, validS = validS,
+            RF = NaN, RS = NaN,
+            ratio = NaN,
+            reversal = false
+        )
+    end
 end
 
 # ============================================================================
@@ -690,29 +785,43 @@ function search_revenue_reversals(;
         println("="^70)
         println("SEARCH RESULTS SUMMARY:")
 
-        reversals = filter(r -> r.reversal, results)
-        converged = filter(r -> abs(r.gapF) < 1e-4 && abs(r.gapS) < 1e-4, results)
+        # CRITICAL: Only count results where BOTH equilibria are valid!
+        valid_results = filter(r -> r.validF && r.validS, results)
+        reversals = filter(r -> r.validF && r.validS && r.reversal, results)
+        invalid_fpa = filter(r -> !r.validF, results)
+        invalid_spa = filter(r -> !r.validS, results)
 
         @printf("Total combinations tested: %d\n", length(results))
-        @printf("Converged equilibria: %d (%.1f%%)\n",
-                length(converged), 100*length(converged)/length(results))
-        @printf("Reversals found: %d (%.1f%%)\n",
-                length(reversals), 100*length(reversals)/max(1, length(converged)))
+        @printf("Valid equilibria (both FPA & SPA): %d (%.1f%%)\n",
+                length(valid_results), 100*length(valid_results)/max(1,length(results)))
+        @printf("  Invalid FPA equilibria: %d\n", length(invalid_fpa))
+        @printf("  Invalid SPA equilibria: %d\n", length(invalid_spa))
+        @printf("\nTrue reversals (valid equilibria only): %d (%.1f%%)\n",
+                length(reversals), 100*length(reversals)/max(1, length(valid_results)))
 
         if length(reversals) > 0
-            println("\nTop 5 reversals by ratio:")
+            println("\n🎉 REVERSALS FOUND! 🎉")
+            println("\nTop reversals by ratio (all with valid equilibria):")
             sort!(reversals, by=r->r.ratio, rev=true)
             for (i, r) in enumerate(reversals[1:min(5, length(reversals))])
-                @printf("  %d. ρ=%.2f, σ=%.2f, c₂=%.1e: ratio=%.4f (η_F=%.3f, η_S=%.3f)\n",
-                        i, r.ρ, r.σ, r.c2, r.ratio, r.ηF, r.ηS)
+                @printf("  %d. ρ=%.2f, σ=%.2f, c₂=%.1e: ratio=%.4f\n", i, r.ρ, r.σ, r.c2, r.ratio)
+                @printf("      η_F=%.3f (gap=%.1e), η_S=%.3f (gap=%.1e)\n",
+                        r.ηF, r.gapF, r.ηS, r.gapS)
             end
         else
-            println("\nNo reversals found in search range.")
-            println("Closest to reversal:")
-            sort!(results, by=r->abs(r.ratio-1))
-            for (i, r) in enumerate(results[1:min(3, length(results))])
-                @printf("  %d. ρ=%.2f, σ=%.2f, c₂=%.1e: ratio=%.4f\n",
-                        i, r.ρ, r.σ, r.c2, r.ratio)
+            println("\n❌ NO TRUE REVERSALS FOUND")
+            println("\nStandard result holds: R_SPA > R_FPA for all valid equilibria")
+
+            if length(valid_results) > 0
+                println("\nClosest to reversal (valid equilibria only):")
+                valid_with_ratio = filter(r -> !isnan(r.ratio), valid_results)
+                if length(valid_with_ratio) > 0
+                    sort!(valid_with_ratio, by=r->abs(r.ratio-1))
+                    for (i, r) in enumerate(valid_with_ratio[1:min(3, length(valid_with_ratio))])
+                        @printf("  %d. ρ=%.2f, σ=%.2f, c₂=%.1e: ratio=%.4f (SPA wins by %.1f%%)\n",
+                                i, r.ρ, r.σ, r.c2, r.ratio, (1/r.ratio - 1)*100)
+                    end
+                end
             end
         end
         println("="^70)

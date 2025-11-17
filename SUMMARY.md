@@ -23,6 +23,82 @@ This implementation provides a **theoretically rigorous** framework for studying
 - Systematic parameter space search
 - Confidence intervals for all estimates
 
+✅ **Rigorous Equilibrium Validation** (CRITICAL!)
+- Corner solutions validated for MR = MC
+- Invalid equilibria automatically rejected
+- No false positives from failed corner solutions
+- Verification script included
+
+---
+
+## 🚨 CRITICAL BUG FIX: Corner Solution Validation
+
+### The Problem (FIXED)
+
+**Original Bug**: The initial implementation would return corner solutions (η* = η_min or η_max) WITHOUT verifying that they satisfied the equilibrium condition MR(η*) = MC(η*). This led to **FALSE REVERSALS** where:
+
+- FPA stuck at η* = η_min with MR << MC (massive negative gap!)
+- These were incorrectly reported as "equilibria"
+- Revenue comparison was meaningless (comparing equilibrium SPA vs non-equilibrium FPA)
+- All "reversals" were actually cases where SPA revenue was 9-12x higher than FPA!
+
+**Example of False Reversal:**
+```
+❌ BEFORE FIX:
+FPA: η* = 0.0101 (η_min), MR-MC = -0.647 ← NOT AN EQUILIBRIUM!
+     Revenue = 0.029
+SPA: η* = 1.952, MR-MC ≈ 0 ✓
+     Revenue = 0.262
+
+Incorrectly reported as "FPA > SPA reversal" but actually SPA wins by 9x!
+```
+
+### The Solution
+
+The fixed implementation now:
+
+1. **Validates ALL corner solutions**: Checks |MR - MC| < tolerance before accepting
+2. **Returns NaN for failed solves**: Signals when no equilibrium exists
+3. **Filters invalid results**: Only counts reversals with BOTH valid equilibria
+4. **Provides verification**: `verify_equilibria.jl` script checks all results
+
+**After Fix:**
+```
+✓ AFTER FIX:
+FPA: η* = NaN (FAILED - no equilibrium exists)
+     Status: ❌ INVALID (|MR-MC| too large)
+SPA: η* = 1.952, MR-MC ≈ 0 ✓
+     Revenue = 0.262
+
+Correctly reported as: No valid comparison (FPA failed to converge)
+```
+
+### Validation Criteria
+
+An equilibrium is considered **VALID** only if:
+- ✓ η* is not NaN (solve didn't fail)
+- ✓ |MR(η*) - MC(η*)| < 10⁻³ (equilibrium condition)
+- ✓ Standard error < 10⁻³ (statistical precision)
+
+**IMPORTANT**: Only reversals with BOTH FPA and SPA having valid equilibria are counted as true reversals!
+
+### How to Verify Results
+
+Always run the verification script on any search results:
+
+```julia
+include("verify_equilibria.jl")
+
+# Verify search results
+results = search_revenue_reversals(...)
+summary = verify_search_results(results, verbose=true)
+
+# Check for false reversals
+if summary.false_reversals > 0
+    println("WARNING: Found false reversals - invalid equilibria!")
+end
+```
+
 ---
 
 ## Theoretical Foundation
